@@ -1,0 +1,76 @@
+<div class="fluid-row">
+  <div class="span12">
+    <div id="edit-menu" class="well well-small">
+
+      <div id="social_network_info">
+        <h4 class="title">{{name}}</h4>
+
+        <div class="operations">
+          {{#linkTo "social_networks.edit" this class="edit" title="Edit Social Network Details"}}
+            <i class="icon-edit"></i>
+          {{/linkTo}}
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+          <span>
+            <i class="icon icon-download-alt"></i>
+            Export in RDF/N3
+          </span>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#" {{action "export"}}>Structure</a>
+          </li>
+          <li>
+            <a href="#" {{action "exportVisual"}}>Structure + Visual Data</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#" {{action "exportVocabulary"}}>Vocabulary</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="edition-buttons">
+        <div class="states">
+          <span>Select Edition Mode:</span>
+          <div class="btn-group" data-toggle="buttons-radio">
+            <button type="button" class="btn btn-primary hand active" title="Edition Mode" {{action "changeMode" "Hand"}}>
+              <i class="icon-hand-up icon-white"></i>
+            </button>
+            <button type="button" class="btn btn-primary actor" title="Add Actor" {{action "changeMode" "Actor"}}>
+              <i class="icon-plus-sign icon-white"></i>
+            </button>
+            <button type="button" class="btn btn-primary relation" title="Add Relation" {{action "changeMode" "Relation"}}>
+              <i class="icon-stop icon-white"></i>
+            </button>
+            <button type="button" class="btn btn-primary role" title="Add Roles" {{action "changeMode" "Role"}}>
+              <i class="icon-arrow-right icon-white"></i>
+            </button>
+            <button type="button" class="btn btn-primary join" title="Join Nodes" {{action "changeMode" "Join"}}>
+              <i class="icon-resize-small icon-white"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="extra-buttons">
+          {{#view App.SortButtonView}}
+            <button type="button" class="btn sort" title="Sort All Nodes" {{action "sort" target="view"}}>Sort</button>
+          {{/view}}
+        </div>
+
+        <div class="zoom-buttons">
+          <div class="btn-group">
+            <button type="button" class="btn zoom-in" title="Zoom In"><i class="icon-zoom-in"></i></button>
+            <button type="button" class="btn zoom-reset" title="Reset Zoom"><i class="icon-screenshot"></i></button>
+            <button type="button" class="btn zoom-out" title="Zoom Out"><i class="icon-zoom-out"></i></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

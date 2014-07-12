@@ -1,0 +1,28 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    {{#linkTo "index" class="brand"}}Social Graph Editor{{/linkTo}}
+
+    <ul class="nav">
+      <li>
+        {{#linkTo "social_networks.index"}}Social Networks{{/linkTo}}
+      </li>
+    </ul>
+
+    {{#if App.Auth.isAuthenticated}}
+      <ul class="nav pull-right">
+        <li>
+          {{#linkTo "user.edit" App.Auth.session.user}}{{App.Auth.session.user.email}}{{/linkTo}}
+        </li>
+        <li>
+          <a href="#" {{action "logout"}}>Log Out</a>
+        </li>
+      </ul>
+    {{else}}
+      <form class="navbar-form pull-right" {{action "login" on="submit"}}>
+        {{input valueBinding="email" type="email" placeholder="Email" id="userEmail"}}
+        {{input valueBinding="password" type="password" placeholder="Password" id="userPassword"}}
+        {{input class="btn" type="submit" value="Login"}}
+      </form>
+    {{/if}}
+  </div>
+</div>

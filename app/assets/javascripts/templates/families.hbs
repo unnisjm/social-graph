@@ -1,0 +1,17 @@
+<a {{action "new"}} href="#current_family" role="button" class="btn btn-small pull-right" data-toggle="modal">
+  <i class="icon-plus-sign"></i> New
+</a>
+
+<h4>Families</h4>
+
+<div id="families" class="items_list">
+  {{#each family in controller}}
+    {{view App.FamilyView contentBinding="family"}}
+  {{else}}
+    <p>Start by creating families for <strong>Actors</strong> and <strong>Relations</strong>.</p>
+  {{/each}}
+</div>
+
+{{#if currentFamily}}
+  {{view App.FamilyFormView contentBinding="currentFamily"}}
+{{/if}}

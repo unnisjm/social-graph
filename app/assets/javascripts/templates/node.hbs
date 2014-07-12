@@ -1,0 +1,49 @@
+{{#if isNew}}
+  <h3>New {{kind}}</h3>
+{{else}}
+  <h3>{{kind}} #{{id}} details</h3>
+{{/if}}
+
+<form id="node_form" {{bindAttr data-node-id="id"}}>
+  <label>
+    Name
+    {{view Ember.TextField valueBinding="name" action="save" placeholder="New Node"}}
+  </label>
+
+    <label id="family_selector">
+      Families
+      {{#if isActor}}
+          {{view Ember.Select contentBinding="social_network.actorFamilies"
+                              optionValuePath="content.id"
+                              optionLabelPath="content.name"
+                              action="save"
+                              selectionBinding="selectedFamilies"
+                              multiple="true"}}
+      {{else}}
+          {{view Ember.Select contentBinding="social_network.relationFamilies"
+                              optionValuePath="content.id"
+                              optionLabelPath="content.name"
+                              action="save"
+                              selectionBinding="selectedFamilies"
+                              multiple="true"}}
+      {{/if}}
+    </label>
+
+    {{#if isNew}}
+      <p><em>after saved you can add attributes to this node</em></p>
+    {{else}}
+      {{render "node_attributes" node_attributes}}
+    {{/if}}
+<form>
+
+<div class="operations">
+  <div class="pull-right">
+    {{#if isNew}}
+      <button class="btn btn-primary" {{action "save"}}>Create</button>
+      <button class="btn" {{action "cancel"}}>Cancel</button>
+    {{else}}
+      <button class="btn btn-primary" {{action "save"}}>Update</button>
+      <button class="btn btn-danger" {{action "delete" this}}>Delete</button>
+    {{/if}}
+  </div>
+</div>

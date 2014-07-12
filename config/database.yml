@@ -1,0 +1,19 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: rails
+  password: rails
+  host: localhost
+
+development:  
+  database: ember_sge_development
+  <<: *defaults
+
+test: &test
+  database: ember_sge_test
+  <<: *defaults
+
+production:
+  database: ember_sge_production
+  <<: *defaults
